@@ -1,4 +1,4 @@
-# Theme Name
+# hugo-terminal.css
 
 ## Features
 
