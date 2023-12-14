@@ -20,7 +20,7 @@
     {{ $css := resources.Get "css/terminal.css-dark.css" | resources.Minify | resources.Fingerprint }}
     <link rel="stylesheet" href="{{ $css.Permalink }}" integrity="{{ $css.Data.Integrity }}">
 
-    {{ $css := resources.Get "css/image.css" | resources.Minify | resources.Fingerprint }}
+    {{ $css := resources.Get "css/media.css" | resources.Minify | resources.Fingerprint }}
     <link rel="stylesheet" href="{{ $css.Permalink }}" integrity="{{ $css.Data.Integrity }}">
 
     {{ $title := print .Site.Title " | " .Title }}
