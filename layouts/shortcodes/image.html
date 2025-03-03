@@ -1,0 +1,50 @@
+{{/*
+Shortcode: image
+
+Args:
+  src (string)    : The source path for the image.
+  alt (string)    : Alternative text for the image.
+  caption (string): Optional caption text.
+  size (string)   : Optional size indicator. Valid values might be:
+                    "large"  - fills the container,
+                    "medium" - about 50% width,
+                    "small"  - about 30% width,
+                    "auto"   - adjusts automatically.
+  lightbox (bool) : If "true", wraps the image in a link that triggers a lightbox overlay.
+*/}}
+
+{{ $src := .Get "src" }}
+{{ $alt := .Get "alt" | default "Image" }}
+{{ $caption := .Get "caption" }}
+{{ $size := .Get "size" | default "auto" }}
+{{ $lightbox := .Get "lightbox" | default "true" }}
+
+{{ $img := resources.Get $src }}
+{{ if not $img }}
+  {{ errorf "Image not found: %s" $src }}
+{{ end }}
+
+{{ $fallbackUrl := $img.RelPermalink }}
+{{ $filter := images.Process "webp" }}
+{{ $imgWebp := $img.Filter $filter }}
+{{ if not $imgWebp }}
+  {{ errorf "WebP conversion failed for image: %s" $src }}
+{{ end }}
+{{ $defaultUrl := $imgWebp.RelPermalink }}
+
+<figure class="image image-{{ $size }} {{ .Get "class" }}">
+  {{ if eq $lightbox "true" }}
+    <a href="{{ $fallbackUrl }}" class="lightbox-url">
+  {{ end }}
+    <picture>
+      <source srcset="{{ $defaultUrl }}" type="image/webp">
+      <img src="{{ $fallbackUrl }}" alt="{{ $alt }}" class="responsive">
+    </picture>
+  {{ if eq $lightbox "true" }}
+    </a>
+  {{ end }}
+
+  {{ if $caption }}
+    <figcaption>{{ $caption }}</figcaption>
+  {{ end }}
+</figure>
