@@ -45,3 +45,47 @@
     --input-style: solid;
     --display-h1-decoration: none;
 }
+
+
+/* Footer styling */
+.site-footer {
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+    border-top: 1px solid #eee;
+}
+  
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+  
+.footer-social {
+    margin: 1rem 0;
+}
+  
+.footer-social a {
+    display: inline-block;
+    margin: 0 0.5rem;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+  
+.footer-social a:hover {
+    opacity: 1;
+}
+  
+.footer-meta {
+    font-size: 0.75rem;
+    color: #777;
+    margin-top: 1rem;
+}
+  
+.footer-meta a {
+    color: #555;
+    text-decoration: none;
+}
+  
+.footer-meta a:hover {
+    text-decoration: underline;
+}

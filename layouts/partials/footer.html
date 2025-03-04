@@ -1,7 +1,38 @@
 <!-- layouts/partials/footer.html -->
-<br><br>
-<p>
-    <small>
-        Copyright &copy; {{ now.Year }} {{ .Site.Params.name }}
-    </small>
-</p>
+<div class="footer-content">
+    <p class="copyright">
+    &copy; {{ now.Year }} {{ .Site.Params.name }}
+    </p>
+    
+    <!-- Optional: Add social links -->
+    <div class="footer-social">
+        {{ with .Site.Params.social.email }}
+        <a href="mailto:{{ . }}" aria-label="Email" class="social-icon">
+        {{ partial "social/icon-email.html" (dict "size" "24") }}
+        </a>
+        {{ end }}
+
+        {{ with .Site.Params.social.gitea }}
+        <a href="{{ . }}" aria-label="Gitea" class="social-icon">
+          {{ partial "social/icon-gitea.html" (dict "context" $ "size" "24") }}
+        </a>
+        {{ end }}
+
+        {{ with .Site.Params.social.github }}
+        <a href="https://github.com/{{ . }}" aria-label="GitHub" class="social-icon">
+          {{ partial "social/icon-github.html" (dict "context" $ "size" "24") }}
+        </a>
+        {{ end }}
+        
+        {{ with .Site.Params.social.linkedin }}
+        <a href="https://linkedin.com/in/{{ . }}" aria-label="LinkedIn" class="social-icon">
+          {{ partial "social/icon-linkedin.html" (dict "context" $ "size" "24") }}
+        </a>
+        {{ end }}
+      </div>
+    
+    <!-- Optional: Add a subtle theme attribution if desired -->
+    <p class="footer-meta">
+    <small>Built with <a href="https://gohugo.io">Hugo</a></small>
+    </p>
+</div>

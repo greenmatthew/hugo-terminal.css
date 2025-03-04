@@ -26,7 +26,7 @@ Note:
     The shortcode always adds the base CSS class "terminal-css/alert".
     If a type is provided, it appends "terminal-css/alert-{type}".
 */}}
-<div class="terminal-css/alert{{ with .Get "type" }} terminal-css/alert-{{ . }}{{ end }}">
+<div class="terminal-alert{{ with .Get "type" }} terminal-alert-{{ . }}{{ end }}">
     {{ .Inner }}
 </div>
   
