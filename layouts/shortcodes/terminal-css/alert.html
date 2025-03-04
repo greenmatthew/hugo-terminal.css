@@ -1,0 +1,32 @@
+{{/*
+Shortcode: terminal-css/alert
+
+Description:
+    Renders a terminal-style alert box with optional styling.
+
+Args:
+    type (str, optional):
+        The alert type to determine additional CSS styling.
+        Valid values:
+            "primary"  - Applies the "terminal-css/alert-primary" class.
+            "error"    - Applies the "terminal-css/alert-error" class.
+        If omitted, the default alert style is used.
+
+Usage Examples:
+    Default alert:
+        {{< terminal-css/alert >}}Default message{{< /terminal-css/alert >}}
+
+    Primary alert:
+        {{< terminal-css/alert type="primary" >}}Primary message{{< /terminal-css/alert >}}
+
+    Error alert:
+        {{< terminal-css/alert type="error" >}}Error message{{< /terminal-css/alert >}}
+
+Note:
+    The shortcode always adds the base CSS class "terminal-css/alert".
+    If a type is provided, it appends "terminal-css/alert-{type}".
+*/}}
+<div class="terminal-css/alert{{ with .Get "type" }} terminal-css/alert-{{ . }}{{ end }}">
+    {{ .Inner }}
+</div>
+  

@@ -1,0 +1,43 @@
+{{/*
+Shortcode: terminal-card
+
+Description:
+    Renders a timeline card with a header and metadata, plus custom inner content.
+
+Parameters:
+    header (string, required):
+        The title or role for the timeline card.
+    date (string, required):
+        The date range (e.g., "Jan. 2024 - Feb. 2025").
+    company (string, required):
+        The company or institution name.
+    location (string, required):
+        The location information (e.g., "Remote" or "Arlington, TX").
+
+Usage Example:
+    {{< terminal-card 
+         header="Unity / VR / Game Console Engineer" 
+         date="Jan. 2024 - Feb. 2025" 
+         company="Rad TV" 
+         location="Remote" >}}
+         <p>
+             Developed and maintained the <b>PlayStation VR2 version</b> of Rad TV for PS5, a hybrid media streaming application—the first of its kind on the PS5.
+         </p>
+         <ul>
+             <li>Independently brought an incomplete PS4 + PSVR port to a fully functional PSVR2 release.</li>
+             <li>Successfully navigated Sony's QA approval process under tight deadlines.</li>
+             <li>Fixed user-reported bugs post-launch and implemented performance improvements.</li>
+             <li>Led major updates, including DLNA/UPnP support.</li>
+             <li>Managed development tasks using Kanban-style boards.</li>
+             <li>Maintained meticulous documentation and changelogs.</li>
+         </ul>
+    {{< /terminal-card >}}
+*/}}
+<div class="terminal-card">
+    <header>
+        <b>{{ .Get "header" }}</b>
+    </header>
+    <div>
+        {{ .Inner }}
+    </div>
+</div>
