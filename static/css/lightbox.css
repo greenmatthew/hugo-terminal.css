@@ -48,7 +48,8 @@
     padding-bottom: 56.333%; /* custom */
     background: black;
 } 
-#lightbox .videoWrapper iframe {
+#lightbox .videoWrapper iframe,
+#lightbox .videoWrapper video {
     position: absolute;
     top: 0;
     left: 0;

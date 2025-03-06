@@ -5,35 +5,42 @@
     justify-content: center;
 }
   
-.image {
+/* Common styles for both image and video elements */
+.image,
+.video {
     margin: 0 auto;
     max-width: 100%; /* Explicitly set max-width to contain the children */
-    margin-bottom: 1.5rem; /* Add space below all images */
+    margin-bottom: 1.5rem; /* Add space below all media elements */
 }
 
-.image-large {
+.image-large,
+.video-large {
     flex: 0 0 100%;
     max-width: 100%;
 }
 
-.image-medium {
+.image-medium,
+.video-medium {
     flex: 0 0 50%;
     max-width: 50%;
 }
 
-.image-small {
+.image-small,
+.video-small {
     flex: 0 0 30%;
     max-width: 30%;
 }
 
-.image-auto {
+.image-auto,
+.video-auto {
     flex: 1;
 }
 
 /* This is critical - make ALL nested elements respect the container width */
 .image a,
 .image picture,
-.image img {
+.image img,
+.video video {
     display: block;
     width: 100%;
     max-width: 100%;
@@ -41,13 +48,15 @@
 }
 
 /* Keep your border radius */
-.image img {
+.image img,
+.video video {
     border-radius: 8px;
     overflow: hidden;
 }
 
 /* Override any .responsive class that might be causing issues */
-.image img.responsive {
+.image img.responsive,
+.video video.responsive {
     width: 100% !important;
     max-width: 100% !important;
 }

@@ -6,6 +6,10 @@ function is_imagelink(url) {
     var p = /([a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif))/i;
     return (url.match(p)) ? true : false;
 }
+function is_videolink(url) {
+    var p = /([a-z\-_0-9\/\:\.]*\.(mp4|webm|mov|ogg|ogv))/i;
+    return (url.match(p)) ? true : false;
+}
 function is_vimeolink(url,el) {
     var id = false;
     var xmlhttp = new XMLHttpRequest();
@@ -114,6 +118,14 @@ document.addEventListener("DOMContentLoaded", function() {
                 var name = split[0];
                 element.setAttribute('title',name);
             }
+            if(is_videolink(url) && !element.classList.contains('no-lightbox')) {
+                element.classList.add('lightbox-video');
+                var href = element.getAttribute('href');
+                var filename = href.split('/').pop();
+                var split = filename.split(".");
+                var name = split[0];
+                element.setAttribute('title',name);
+            }
         }
     });
 
@@ -149,4 +161,15 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
+    //add the video lightbox on click
+    var elements = document.querySelectorAll('a.lightbox-video');
+    elements.forEach(element => {
+        element.addEventListener("click", function(event) {
+            event.preventDefault();
+            document.getElementById('lightbox').innerHTML = '<a id="close"></a><a id="next">&rsaquo;</a><a id="prev">&lsaquo;</a><div class="videoWrapperContainer"><div class="videoWrapper"><video src="'+this.getAttribute('href')+'" autoplay controls></video></div></div>';
+            document.getElementById('lightbox').style.display = 'block';
+
+            setGallery(this);
+        });
+    });
 });
