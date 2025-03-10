@@ -1,0 +1,7 @@
+.terminal-card .subheader center p {
+    margin: 0.1rem 0; /* Small margin top and bottom */
+}
+
+.terminal-card .subheader {
+    padding: 0.5rem 0;
+}

@@ -7,29 +7,20 @@ Description:
 Parameters:
     header (string, required):
         The title or role for the timeline card.
-    date (string, required):
-        The date range (e.g., "Jan. 2024 - Feb. 2025").
-    company (string, required):
-        The company or institution name.
-    location (string, required):
-        The location information (e.g., "Remote" or "Arlington, TX").
+    subheader (string, optional):
+        HTML content for the card's subheader section, typically containing date, company, and location.
 
 Usage Example:
     {{< terminal-card 
-         header="Unity / VR / Game Console Engineer" 
-         date="Jan. 2024 - Feb. 2025" 
-         company="Rad TV" 
-         location="Remote" >}}
+         header="Job Title" 
+         subheader="<p>Jan. 2020 - Dec. 2021</p><p><b>Company</b></p><p>Location</p>" >}}
          <p>
-             Developed and maintained the <b>PlayStation VR2 version</b> of Rad TV for PS5, a hybrid media streaming application—the first of its kind on the PS5.
+             Summary
          </p>
          <ul>
-             <li>Independently brought an incomplete PS4 + PSVR port to a fully functional PSVR2 release.</li>
-             <li>Successfully navigated Sony's QA approval process under tight deadlines.</li>
-             <li>Fixed user-reported bugs post-launch and implemented performance improvements.</li>
-             <li>Led major updates, including DLNA/UPnP support.</li>
-             <li>Managed development tasks using Kanban-style boards.</li>
-             <li>Maintained meticulous documentation and changelogs.</li>
+             <li>Job detail 1.</li>
+             <li>Job detail 2.</li>
+             <li>Job detail 3.</li>
          </ul>
     {{< /terminal-card >}}
 */}}
@@ -37,7 +28,16 @@ Usage Example:
     <header>
         <b>{{ .Get "header" }}</b>
     </header>
-    <div>
-        {{ .Inner }}
+    <div class="terminal-card-content">
+        {{ with .Get "subheader" }}
+        <div class="subheader">
+            <center>
+                {{ . | safeHTML }}
+            </center>
+        </div>
+        {{ end }}
+        <div>
+            {{ .Inner }}
+        </div>
     </div>
 </div>

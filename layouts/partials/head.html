@@ -20,10 +20,9 @@
     {{ $css := resources.Get "css/terminal.css-dark.css" | resources.Minify | resources.Fingerprint }}
     <link rel="stylesheet" href="{{ $css.Permalink }}" integrity="{{ $css.Data.Integrity }}">
 
-    {{ $css := resources.Get "css/media.css" | resources.Minify | resources.Fingerprint }}
+    {{ $css := resources.Get "css/theme-customizations.css" | resources.Minify | resources.Fingerprint }}
     <link rel="stylesheet" href="{{ $css.Permalink }}" integrity="{{ $css.Data.Integrity }}">
 
-    <!-- In the theme's head.html or baseof.html -->
     {{ if templates.Exists "partials/head-extension.html" }}
         {{ partial "head-extension.html" . }}
     {{ end }}
