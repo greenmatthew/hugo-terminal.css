@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta name="theme-color" content="#ffffff" />
+    <meta name="author" content="{{ with .Params.author }}{{ . }}{{ else }}{{ .Site.Params.defaultAuthor }}{{ end }}">
     <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.defaultDescription }}{{ end }}">
     <meta name="keywords" content="{{ with .Params.keywords }}{{ range $index, $keyword := . }}{{ if $index }}, {{ end }}{{ $keyword }}{{ end }}{{ else }}{{ .Site.Params.defaultKeywords }}{{ end }}">
 
